@@ -1,0 +1,419 @@
+<!doctype html>
+<html lang="en" class="no-js">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>L3dgr: a simple way to keep track of your spending</title>
+<meta name="description" content="L3dgr is a simple spending tracker for Android. No bank connection, no complicated budgeting. Just enter what you spend and see where it goes. Works offline, free to use.">
+<meta name="theme-color" content="#0E1311">
+<link rel="canonical" href="https://l3dgr.app/">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
+<link rel="icon" type="image/png" sizes="64x64" href="/favicon-64.png">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="L3dgr">
+<meta property="og:title" content="L3dgr: your money, your record">
+<meta property="og:description" content="A simple way to keep track of your spending. No bank connection. Just enter what you spend and see where it goes.">
+<meta property="og:url" content="https://l3dgr.app/">
+<meta property="og:image" content="https://l3dgr.app/og.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700&family=Manrope:wght@400;500;600;700&display=swap">
+<link rel="stylesheet" href="/assets/site.css">
+<link rel="preload" as="image" href="/assets/img/app-hero.webp">
+<script>document.documentElement.classList.remove('no-js')</script>
+</head>
+<body>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <symbol id="i-check" viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    <symbol id="i-x" viewBox="0 0 24 24"><path d="M18 6 6 18M6 6l12 12" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></symbol>
+    <symbol id="i-clock" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></g></symbol>
+    <symbol id="i-android" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 16V11a7 7 0 0 1 14 0v5z"/><path d="M7.5 5.5 6 3.5M16.5 5.5 18 3.5"/><circle cx="9.5" cy="11" r=".6" fill="currentColor"/><circle cx="14.5" cy="11" r=".6" fill="currentColor"/></g></symbol>
+    <symbol id="i-unlink" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 17H7A5 5 0 0 1 7 7h2M15 7h2a5 5 0 0 1 4 8"/><path d="M8 12h4"/><path d="m2 2 20 20"/></g></symbol>
+    <symbol id="i-wifi-off" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h.01M8.5 16.4a5 5 0 0 1 7 0M2 8.8a15 15 0 0 1 4.2-2.6M10.7 5.1A15 15 0 0 1 22 8.8M5 12.9a10 10 0 0 1 5.2-2.7M16.8 11.5a10 10 0 0 1 2.2 1.4"/><path d="m2 2 20 20"/></g></symbol>
+    <symbol id="i-file" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5M10 13l-2 2 2 2M14 13l2 2-2 2"/></g></symbol>
+    <symbol id="i-eye-off" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10.7 5.1A10 10 0 0 1 22 12a13 13 0 0 1-2.2 3M6.6 6.6A13 13 0 0 0 2 12s3.5 7 10 7a9.7 9.7 0 0 0 5.4-1.6"/><path d="M9.9 9.9a3 3 0 0 0 4.2 4.2"/><path d="m2 2 20 20"/></g></symbol>
+    <symbol id="i-repeat" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m17 2 4 4-4 4"/><path d="M3 11v-1a4 4 0 0 1 4-4h14M7 22l-4-4 4-4"/><path d="M21 13v1a4 4 0 0 1-4 4H3"/></g></symbol>
+    <symbol id="i-target" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1" fill="currentColor"/></g></symbol>
+    <symbol id="i-tag" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12.6 2.6A2 2 0 0 0 11.2 2H4a2 2 0 0 0-2 2v7.2a2 2 0 0 0 .6 1.4l8.7 8.7a2.4 2.4 0 0 0 3.4 0l6.6-6.6a2.4 2.4 0 0 0 0-3.4z"/><circle cx="7.5" cy="7.5" r="1" fill="currentColor"/></g></symbol>
+    <symbol id="i-palette" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3a9 9 0 1 0 0 18c1.1 0 1.8-.8 1.8-1.7 0-.5-.2-.9-.5-1.2-.3-.3-.5-.7-.5-1.2 0-.9.8-1.7 1.7-1.7H17a4 4 0 0 0 4-4c0-4.5-4-8.2-9-8.2z"/><circle cx="7.5" cy="11" r="1" fill="currentColor"/><circle cx="10.5" cy="7" r="1" fill="currentColor"/><circle cx="15" cy="7.5" r="1" fill="currentColor"/></g></symbol>
+    <symbol id="i-layers" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><rect x="3" y="4" width="18" height="7" rx="2"/><rect x="3" y="14" width="8" height="6" rx="2"/><rect x="14" y="14" width="7" height="6" rx="2"/></g></symbol>
+    <symbol id="i-help" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M9.6 9.3a2.5 2.5 0 0 1 4.8.9c0 1.7-2.4 2.3-2.4 3.8M12 17h.01"/></g></symbol>
+    <symbol id="i-moon" viewBox="0 0 24 24"><path d="M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></symbol>
+    <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    <symbol id="i-down" viewBox="0 0 24 24"><path d="M12 5v14M6 13l6 6 6-6" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+  </defs>
+</svg>
+
+<header class="nav" id="nav">
+  <div class="wrap">
+    <a class="brand" href="/" aria-label="L3dgr home"><img src="/assets/img/logo.png" alt="" width="32" height="32">L3dgr</a>
+    <nav aria-label="Main">
+      <ul>
+        <li><a href="#how">How it works</a></li>
+        <li><a href="#why">Why manual</a></li>
+        <li><a href="#features">Features</a></li>
+        <li><a href="#plans">Plans</a></li>
+        <li><a href="#faq">FAQ</a></li>
+      </ul>
+    </nav>
+    <a class="btn btn-primary btn-sm" data-play href="#get">Get the app</a>
+  </div>
+</header>
+
+<main>
+
+<!-- ============ HERO ============ -->
+<section class="hero" id="top">
+  <div class="hero-bg" aria-hidden="true">
+    <img src="/assets/img/bg.jpg" alt="">
+    <video src="/assets/img/bg.mp4" poster="/assets/img/bg.jpg" autoplay muted loop playsinline preload="metadata"></video>
+  </div>
+  <div class="wrap">
+    <div>
+      <span class="eyebrow"><i></i>A personal spending ledger for Android</span>
+      <h1>Your money.<br><em>Your record.</em></h1>
+      <p class="lede">A simple way to keep track of your spending. <b>No bank connections. No complicated budgeting.</b> Just enter what you spend and see where your money goes.</p>
+      <div class="ctas">
+        <a class="btn btn-primary btn-store" data-play href="#get">
+          <svg width="24" height="24"><use href="#i-android"/></svg>
+          <span><span class="play-sub" data-play-sub>COMING SOON TO GOOGLE PLAY</span>Get L3dgr for Android</span>
+        </a>
+        <a class="btn btn-ghost" href="#how">Learn how it works <svg width="18" height="18"><use href="#i-down"/></svg></a>
+      </div>
+      <div class="proof">
+        <span><svg width="16" height="16"><use href="#i-check"/></svg>Free, no trial</span>
+        <span><svg width="16" height="16"><use href="#i-check"/></svg>No account needed</span>
+        <span><svg width="16" height="16"><use href="#i-check"/></svg>No ads</span>
+      </div>
+    </div>
+    <div class="stage">
+      <div class="phone">
+        <div class="screen"><img src="/assets/img/app-hero.webp" alt="L3dgr's overview screen: $2,866.58 spent in October, on track against a $3,600 goal, with a list of recent purchases" width="412" height="915"></div>
+      </div>
+      <div class="float f1" aria-hidden="true">
+        <span class="ic"><svg width="20" height="20"><use href="#i-check"/></svg></span>
+        <span><b>Coffee</b><small>Eating out · Want</small></span>
+        <span class="amt">$14.50</span>
+      </div>
+      <div class="float f2" aria-hidden="true">
+        <span class="ic"><svg width="20" height="20"><use href="#i-target"/></svg></span>
+        <span><b>On track</b><small>$733 left · 10 days to go</small></span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="ticker" aria-hidden="true">
+  <ul>
+    <li>No bank connection</li><li>Works offline</li><li>No account</li><li>No ads, no tracking</li><li>Export to a JSON file</li><li>Free core, forever</li><li>Made by an independent developer</li>
+    <li>No bank connection</li><li>Works offline</li><li>No account</li><li>No ads, no tracking</li><li>Export to a JSON file</li><li>Free core, forever</li><li>Made by an independent developer</li>
+  </ul>
+</div>
+
+<!-- ============ HOW IT WORKS ============ -->
+<section class="sec" id="how">
+  <div class="wrap">
+    <div class="rv">
+      <p class="kicker">Simple by design</p>
+      <h2 class="h2">Spend. Enter it.<br><span class="dim">See where it goes.</span></h2>
+    </div>
+    <div class="how">
+      <div class="rv">
+        <p class="flow anim" id="flow" aria-label="Plus 14 dollars 50, Coffee, Done">
+          <span class="t1" data-step>+$14.50</span><span class="arr" data-step>→</span>
+          <span data-step>Coffee</span><span class="arr" data-step>→</span>
+          <span class="t3" data-step>Done <span class="tick"><svg width="22" height="22"><use href="#i-check"/></svg></span></span>
+        </p>
+        <ol class="steps">
+          <li><span class="n">1</span><div><h3>Enter the amount</h3><p>Tap +, type what you paid. The keypad is already open.</p></div></li>
+          <li><span class="n">2</span><div><h3>Pick a category</h3><p>Your recent ones are at the top. Mark it a need or a want if you like.</p></div></li>
+          <li><span class="n">3</span><div><h3>Done</h3><p>It lands in this month's total, your goal and your charts. A few seconds, start to finish.</p></div></li>
+        </ol>
+      </div>
+      <div class="how-visual rv">
+        <div class="glow"></div>
+        <div class="phone"><div class="screen"><img src="/assets/img/app-add.webp" alt="Adding a purchase in L3dgr: $14.50, note Coffee, category Eating out, marked as a want" width="412" height="915" loading="lazy"></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ WHY MANUAL ============ -->
+<section class="sec why" id="why">
+  <div class="wrap">
+    <p class="kicker rv">Why manual?</p>
+    <div class="why-grid">
+      <h2 class="big rv">Tracking isn't supposed to <span>disappear.</span></h2>
+      <div class="copy rv">
+        <p>When you enter a purchase yourself, you actually see it. That small moment is the point: it's how you start to notice where your money goes.</p>
+        <p><b>L3dgr makes that moment fast enough to be effortless, without making it invisible.</b></p>
+      </div>
+    </div>
+    <div class="compare">
+      <div class="cmp them rv">
+        <h3>Automatic tracking</h3>
+        <ul>
+          <li><svg width="16" height="16"><use href="#i-x"/></svg>Hand over your bank login to a third party</li>
+          <li><svg width="16" height="16"><use href="#i-x"/></svg>Transactions show up days later, sorted by an algorithm</li>
+          <li><svg width="16" height="16"><use href="#i-x"/></svg>Easy to set up, easy to stop looking at</li>
+        </ul>
+      </div>
+      <div class="cmp us rv">
+        <h3>L3dgr</h3>
+        <ul>
+          <li><svg width="16" height="16"><use href="#i-check"/></svg>Nothing to connect. Open it and start</li>
+          <li><svg width="16" height="16"><use href="#i-check"/></svg>You record it the moment it happens, in your own words</li>
+          <li><svg width="16" height="16"><use href="#i-check"/></svg>You know where every dollar went, because you put it there</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PRINCIPLES ============ -->
+<section class="sec" id="principles">
+  <div class="wrap">
+    <div class="center rv">
+      <p class="kicker">Built with restraint</p>
+      <h2 class="h2">Less to set up.<br><span class="dim">Nothing to hand over.</span></h2>
+    </div>
+    <div class="cards">
+      <article class="card rv">
+        <span class="ic"><svg width="24" height="24"><use href="#i-unlink"/></svg></span>
+        <h3>Your bank doesn't need to be connected</h3>
+        <p>No credentials. No syncing. No waiting for transactions to appear. Just track what you spend.</p>
+      </article>
+      <article class="card rv">
+        <span class="ic"><svg width="24" height="24"><use href="#i-wifi-off"/></svg></span>
+        <h3>Your spending doesn't need the internet</h3>
+        <p>L3dgr works offline, so it's there in the checkout line, on the plane or out of signal.</p>
+      </article>
+      <article class="card rv">
+        <span class="ic"><svg width="24" height="24"><use href="#i-file"/></svg></span>
+        <h3>No lock-in</h3>
+        <p>Export everything as one simple JSON file. Keep it, back it up, move it or import it again whenever you want.</p>
+<div class="json" aria-hidden="true">{ <span class="k">"app"</span>: <span class="s">"l3dgr"</span>,
+  <span class="k">"months"</span>: { <span class="k">"2026-10"</span>: [
+    { <span class="k">"amount"</span>: <span class="n">1450</span>,
+      <span class="k">"note"</span>: <span class="s">"Coffee"</span> }</div>
+      </article>
+      <article class="card rv">
+        <span class="ic"><svg width="24" height="24"><use href="#i-eye-off"/></svg></span>
+        <h3>No account, no ads</h3>
+        <p>Your budget stays on your phone. There's no sign-up, and no advertising, analytics or tracking tools in the app.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FEATURES ============ -->
+<section class="sec" id="features" style="padding-top:40px">
+  <div class="wrap">
+    <div class="show">
+      <div class="rv">
+        <p class="kicker">See where it goes</p>
+        <h3>A clear picture,<br>not a dashboard.</h3>
+        <p class="sub">Every purchase adds up into a month you can read at a glance, without a single spreadsheet.</p>
+        <ul class="ticks">
+          <li><svg width="18" height="18"><use href="#i-check"/></svg><span><b>Where it went:</b> by group and category, each in its own colour</span></li>
+          <li><svg width="18" height="18"><use href="#i-check"/></svg><span><b>Needs vs wants:</b> see the split, no judgement</span></li>
+          <li><svg width="18" height="18"><use href="#i-check"/></svg><span><b>This month vs usual:</b> averages and trends over the months</span></li>
+          <li><svg width="18" height="18"><use href="#i-check"/></svg><span><b>A monthly goal</b> with a pace bar that knows what day it is</span></li>
+        </ul>
+      </div>
+      <div class="show-art rv">
+        <div class="phone sm"><div class="screen"><img src="/assets/img/app-wherewent.webp" alt="Where it went: spending by group, Home 69%, Food 13%, Car 8%" width="412" height="915" loading="lazy"></div></div>
+        <div class="phone sm"><div class="screen"><img src="/assets/img/app-analytics.webp" alt="Analytics: recurring vs discretionary spending over six months, and needs, wants and savings shares" width="412" height="915" loading="lazy"></div></div>
+      </div>
+    </div>
+
+    <div class="show rev">
+      <div class="rv">
+        <p class="kicker" style="color:var(--sav)">Bills and savings</p>
+        <h3>The regular stuff,<br>ticked off.</h3>
+        <p class="sub">Rent, subscriptions and savings deposits come round on their own schedule. L3dgr lists them each month so you can tick them off.</p>
+        <ul class="ticks">
+          <li><svg width="18" height="18"><use href="#i-check"/></svg><span><b>Recurring items</b> weekly, every 2 weeks, monthly or yearly, grouped into sections</span></li>
+          <li><svg width="18" height="18"><use href="#i-check"/></svg><span><b>Expenses and Savings</b>, each with its own month view, total and goal</span></li>
+          <li><svg width="18" height="18"><use href="#i-check"/></svg><span><b>One-off purchases</b> kept apart from the bills, so you see what you chose to spend</span></li>
+        </ul>
+      </div>
+      <div class="show-art sav rv">
+        <div class="phone sm"><div class="screen"><img src="/assets/img/app-overview.webp" alt="Recurring checklist: rent, hydro, internet, car insurance and subscriptions, all ticked" width="412" height="915" loading="lazy"></div></div>
+        <div class="phone sm"><div class="screen"><img src="/assets/img/app-savings.webp" alt="Savings mode: $750 saved in October, savings goal reached" width="412" height="915" loading="lazy"></div></div>
+      </div>
+    </div>
+
+    <div class="mini rv">
+      <div><svg width="22" height="22"><use href="#i-tag"/></svg><h4>Categories in groups</h4><p>Start from sensible presets, then rename and regroup them. Each group has its own colour.</p></div>
+      <div><svg width="22" height="22"><use href="#i-palette"/></svg><h4>Make it yours</h4><p>Colour themes, still and animated backgrounds, light, dark or auto.</p></div>
+      <div><svg width="22" height="22"><use href="#i-layers"/></svg><h4>Your layout</h4><p>Reorder, hide and fold the cards until the screen shows what you care about.</p></div>
+      <div><svg width="22" height="22"><use href="#i-file"/></svg><h4>Backups as a file</h4><p>Export and import from Your data. Erase all data resets everything.</p></div>
+      <div><svg width="22" height="22"><use href="#i-help"/></svg><h4>Help built in</h4><p>Short tutorials when you need them, and feedback straight from the app.</p></div>
+      <div><svg width="22" height="22"><use href="#i-repeat"/></svg><h4>Undo, generously</h4><p>Changed your mind? The last 20 changes can be undone with one tap.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PLANS ============ -->
+<section class="sec" id="plans">
+  <div class="wrap">
+    <div class="plans-head rv">
+      <p class="kicker">Plans</p>
+      <h2 class="h2">Free to track.<br><span class="dim">Pay only for extras.</span></h2>
+      <p class="sub">The whole spending tracker is free, for good. Plus and Pro add looks and extras. Nothing you need to track your money is locked.</p>
+      <div class="toggle" role="group" aria-label="Billing period">
+        <button type="button" data-period="month" aria-pressed="true">Monthly</button>
+        <button type="button" data-period="year" aria-pressed="false">Yearly <span class="save">save 33%</span></button>
+      </div>
+    </div>
+    <div class="plans">
+      <article class="plan rv">
+        <h3>Free</h3>
+        <p class="tag">Yours, forever.</p>
+        <div class="price"><b>$0</b><span>forever</span></div>
+        <p class="price-note">No trial, no card.</p>
+        <div class="swatches" aria-label="1 colour theme"><i style="background:#1F6B52"></i><i class="off" style="background:#1D5E8C"></i><i class="off" style="background:#A4502A"></i><i class="off" style="background:#3E4C59"></i><i class="off" style="background:#6B3F8F"></i><i class="off" style="background:#A63D60"></i><i class="off" style="background:#5A6D1C"></i><i class="off" style="background:#3A4AA8"></i></div>
+        <ul>
+          <li class="head"><svg width="16" height="16"><use href="#i-check"/></svg>The full spending tracker</li>
+          <li><svg width="16" height="16"><use href="#i-check"/></svg>Expenses and Savings, goals, recurring items</li>
+          <li><svg width="16" height="16"><use href="#i-check"/></svg>All the analytics</li>
+          <li><svg width="16" height="16"><use href="#i-check"/></svg>Backups, import and export</li>
+          <li><svg width="16" height="16"><use href="#i-check"/></svg>Forest colour theme</li>
+          <li><svg width="16" height="16"><use href="#i-check"/></svg>4 still backgrounds</li>
+        </ul>
+      </article>
+      <article class="plan pop rv">
+        <h3>Plus</h3>
+        <p class="tag">Make it yours.</p>
+        <div class="price"><b data-m="$4.99" data-y="$39.99">$4.99</b><span data-m="/ month" data-y="/ year">/ month</span></div>
+        <p class="price-note" data-m="or $39.99 a year" data-y="That's $3.33 a month">or $39.99 a year</p>
+        <div class="swatches" aria-label="4 colour themes"><i style="background:#1F6B52"></i><i style="background:#1D5E8C"></i><i style="background:#A4502A"></i><i style="background:#3E4C59"></i><i class="off" style="background:#6B3F8F"></i><i class="off" style="background:#A63D60"></i><i class="off" style="background:#5A6D1C"></i><i class="off" style="background:#3A4AA8"></i></div>
+        <ul>
+          <li class="head"><svg width="16" height="16"><use href="#i-check"/></svg>Everything in Free</li>
+          <li><svg width="16" height="16"><use href="#i-check"/></svg>3 more colour themes: Ocean, Ember, Slate</li>
+          <li><svg width="16" height="16"><use href="#i-check"/></svg>4 animated backgrounds</li>
+          <li><svg width="16" height="16"><use href="#i-check"/></svg>4 more still backgrounds</li>
+          <li class="soon"><svg width="16" height="16"><use href="#i-clock"/></svg><span>Extra cards <span class="soon-tag">Soon</span></span></li>
+        </ul>
+      </article>
+      <article class="plan rv">
+        <h3>Pro</h3>
+        <p class="tag">The whole studio.</p>
+        <div class="price"><b data-m="$9.99" data-y="$79.99">$9.99</b><span data-m="/ month" data-y="/ year">/ month</span></div>
+        <p class="price-note" data-m="or $79.99 a year" data-y="That's $6.67 a month">or $79.99 a year</p>
+        <div class="swatches" aria-label="8 colour themes"><i style="background:#1F6B52"></i><i style="background:#1D5E8C"></i><i style="background:#A4502A"></i><i style="background:#3E4C59"></i><i style="background:#6B3F8F"></i><i style="background:#A63D60"></i><i style="background:#5A6D1C"></i><i style="background:#3A4AA8"></i></div>
+        <ul>
+          <li class="head"><svg width="16" height="16"><use href="#i-check"/></svg>Everything in Plus</li>
+          <li><svg width="16" height="16"><use href="#i-check"/></svg>All 8 colour themes</li>
+          <li><svg width="16" height="16"><use href="#i-check"/></svg>16 animated backgrounds</li>
+          <li><svg width="16" height="16"><use href="#i-check"/></svg>16 still backgrounds</li>
+          <li class="soon"><svg width="16" height="16"><use href="#i-clock"/></svg><span>Make your own theme <span class="soon-tag">Soon</span></span></li>
+          <li class="soon"><svg width="16" height="16"><use href="#i-clock"/></svg><span>Exclusive widgets <span class="soon-tag">Soon</span></span></li>
+          <li class="soon"><svg width="16" height="16"><use href="#i-clock"/></svg><span>Web and desktop app <span class="soon-tag">Soon</span></span></li>
+          <li class="soon"><svg width="16" height="16"><use href="#i-clock"/></svg><span>Sync across devices <span class="soon-tag">Soon</span></span></li>
+        </ul>
+      </article>
+    </div>
+    <p class="fine">Prices are shown in USD as a guide; Google Play shows the final price in your currency. Subscriptions are sold through Google Play, renew automatically, and can be cancelled anytime in Google Play.</p>
+  </div>
+</section>
+
+<!-- ============ FAQ ============ -->
+<section class="sec" id="faq" style="padding-top:40px">
+  <div class="wrap">
+    <div class="center rv">
+      <p class="kicker">Questions</p>
+      <h2 class="h2">Good to know.</h2>
+    </div>
+    <div class="faq rv">
+      <details>
+        <summary>Can I connect my bank account?</summary>
+        <div class="a"><p>No, and that's on purpose. L3dgr is built around entering what you spend yourself. There are no bank logins, no syncing and no waiting for transactions.</p></div>
+      </details>
+      <details>
+        <summary>Isn't typing every purchase a chore?</summary>
+        <div class="a"><p>Adding one takes a few seconds: amount, category, done. Bills and other regular payments can be set up once as recurring items, so you only type the one-off spending.</p></div>
+      </details>
+      <details>
+        <summary>Where is my data stored?</summary>
+        <div class="a"><p>On your phone. Your entries, goals and settings stay in the app's private storage and aren't sent to us. You can export a backup file at any time and keep it wherever you like. The <a href="/privacy">Privacy Policy</a> has the details.</p></div>
+      </details>
+      <details>
+        <summary>Do I need an account or an internet connection?</summary>
+        <div class="a"><p>Neither. There's no sign-up, and tracking works offline. The internet is only used for purchases through Google Play and for sending feedback.</p></div>
+      </details>
+      <details>
+        <summary>What happens if I change phones?</summary>
+        <div class="a"><p>Export a backup from Your data, move the file to your new phone and import it. Everything comes across, including your card layout.</p></div>
+      </details>
+      <details>
+        <summary>Is the free version really free?</summary>
+        <div class="a"><p>Yes. Tracking, goals, recurring items, analytics and backups are all free, with no time limit. Plus and Pro add colour themes, backgrounds and extras.</p></div>
+      </details>
+      <details>
+        <summary>Is there an iPhone, web or desktop version?</summary>
+        <div class="a"><p>L3dgr is on Android first. A web and desktop app is coming, as part of Pro. If you'd like to hear when it's ready, write to <a href="mailto:hello@l3dgr.app">hello@l3dgr.app</a>.</p></div>
+      </details>
+      <details>
+        <summary>How do I cancel a subscription?</summary>
+        <div class="a"><p>In Google Play: Profile, Payments &amp; subscriptions, Subscriptions. You keep your plan until the end of the period you paid for, and your data is never affected.</p></div>
+      </details>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FINAL CTA ============ -->
+<section class="final" id="get">
+  <div class="hero-bg" aria-hidden="true">
+    <img src="/assets/img/bg.jpg" alt="" loading="lazy">
+    <video data-src="/assets/img/bg.mp4" muted loop playsinline preload="none"></video>
+  </div>
+  <div class="wrap rv">
+    <img class="logo" src="/assets/img/logo.png" alt="" width="84" height="84">
+    <h2 class="h2">Know where it goes.</h2>
+    <p class="sub">Start tracking in under a minute. No bank, no account, no fuss.</p>
+    <div class="ctas">
+      <a class="btn btn-primary btn-store" data-play href="#get">
+        <svg width="24" height="24"><use href="#i-android"/></svg>
+        <span><span class="play-sub" data-play-sub>COMING SOON TO GOOGLE PLAY</span>Get L3dgr for Android</span>
+      </a>
+      <a class="btn btn-ghost" href="mailto:hello@l3dgr.app?subject=Tell%20me%20when%20L3dgr%20launches">Email me at launch</a>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer class="site">
+  <div class="wrap">
+    <div>
+      <a class="brand" href="/"><img src="/assets/img/logo.png" alt="" width="32" height="32">L3dgr</a>
+      <p>A simple spending tracker. Made by an independent developer.</p>
+    </div>
+    <div>
+      <h4>App</h4>
+      <ul><li><a href="#how">How it works</a></li><li><a href="#features">Features</a></li><li><a href="#plans">Plans</a></li><li><a href="#faq">FAQ</a></li></ul>
+    </div>
+    <div>
+      <h4>Legal</h4>
+      <ul><li><a href="/privacy">Privacy Policy</a></li><li><a href="/terms">Terms of Service</a></li></ul>
+    </div>
+    <div>
+      <h4>Contact</h4>
+      <ul><li><a href="mailto:hello@l3dgr.app">hello@l3dgr.app</a></li></ul>
+    </div>
+    <div class="legal">
+      <span>© <span data-year>2026</span> L3dgr</span>
+      <span>Google Play is a trademark of Google LLC.</span>
+    </div>
+  </div>
+</footer>
+
+<script src="/assets/site.js" defer></script>
+</body>
+</html>
