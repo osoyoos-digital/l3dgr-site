@@ -9,7 +9,6 @@ document.querySelectorAll('[data-play]').forEach(a => {
   if (PLAY_LIVE) { a.href = PLAY_URL; a.rel = 'noopener'; }
   else a.href = '#get';
 });
-document.querySelectorAll('[data-play-sub]').forEach(s => { s.textContent = PLAY_LIVE ? 'GET IT ON GOOGLE PLAY' : 'COMING SOON TO GOOGLE PLAY'; });
 
 const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
 
