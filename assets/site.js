@@ -57,7 +57,7 @@ const lateVid = document.querySelector('video[data-src]');
 if (lateVid && !reduce && 'IntersectionObserver' in window) {
   new IntersectionObserver(([e], o) => {
     if (!e.isIntersecting) return;
-    lateVid.src = lateVid.dataset.src; lateVid.play().catch(() => {}); o.disconnect();
+    lateVid.src = matchMedia('(max-width: 760px)').matches ? lateVid.dataset.srcSm : lateVid.dataset.src; lateVid.play().catch(() => {}); o.disconnect();
   }, { rootMargin: '400px' }).observe(lateVid);
 }
 // pause the hero video for people who prefer less motion
